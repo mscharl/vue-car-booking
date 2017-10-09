@@ -3,9 +3,80 @@
 <head>
     <meta charset="utf-8">
     <title>vue-car-booking</title>
+    <style>
+        body, html {
+            font-size: 10px;
+
+            font-family: sans-serif;
+            color: #2C3E50;
+        }
+
+
+
+
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+
+
+
+        .Loading-screen {
+            font-size: 3rem;
+            font-weight: 200;
+
+            width: 100vw;
+            height: 62.5vh;
+
+            margin-top: 14.0625vh;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+
+        .Loading-screen__loader {
+            display: block;
+
+            width: 1.4em;
+            height: 1.4em;
+
+            border: .08em solid rgba(0, 0, 0, .15);
+            border-top-color: currentColor;
+            border-radius: 100%;
+
+            animation-name: spin;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+
+            margin: 1em;
+        }
+
+
+
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(359deg);
+            }
+        }
+    </style>
 </head>
 <body>
-<div id="app"></div>
-<script src="/dist/build.js"></script>
+<div id="app">
+    <section class="Loading-screen">
+        <i class="Loading-screen__loader"></i> Loading …
+    </section>
+</div>
+<script src="/dist/build.js" async defer></script>
 </body>
 </html>
