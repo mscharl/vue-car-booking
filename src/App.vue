@@ -1,50 +1,41 @@
 <template>
-    <div id="app">
-        <ul class="Display Display--week" v-if="showDayCalendar" key="dayCalendar">
-            <li class="Display__day" v-for="day in daysOfTheWeek">
-                <calendar-day :day="day"/>
-            </li>
-        </ul>
+    <div id="app" class="Display">
+        <week></week>
     </div>
 </template>
 
 <script>
     import moment from 'moment';
-    import CalendarDay from './components/Calendar/CalendarDay.vue';
-
-    window._moment = moment;
-
-    const DISPLAY_TYPE = {
-        DAY  : 'day',
-        WEEK : 'week',
-        MONTH: 'month',
-    };
+    import Week from './components/Week.vue';
 
     export default {
         name      : 'VueCarBooking',
         components: {
-            CalendarDay,
+            Week,
         },
         data() {
             return {
-                display: DISPLAY_TYPE.DAY,
             }
         },
 
-        computed: {
-            showDayCalendar() {
-                return this.display === DISPLAY_TYPE.DAY;
-            },
-
-            daysOfTheWeek() {
-                return [1, 2, 3, 4, 5, 6, 7].map((day) => moment()
-                    .isoWeekday(day));
-            },
-        },
+        computed: {}
     }
 </script>
 
 <style lang="scss">
+    @import '../scss/variables';
+
+
+
+
+    :root {
+        @each $map_name, $map in $variables {
+            @each $key, $value in $map {
+                --#{$map_name}-#{$key}: $value;
+            }
+        }
+    }
+
     .Display {
         display: flex;
 
@@ -54,17 +45,5 @@
 
         width: 100vw;
         height: 100vh;
-
-        &--week {
-            flex-direction: row;
-        }
-
-        &__day {
-            flex-grow: 0;
-            flex-shrink: 0;
-            flex-basis: #{100%/7};
-
-            border-right: 1px solid rgba(0, 0, 0, .15);
-        }
     }
 </style>

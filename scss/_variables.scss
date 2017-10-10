@@ -1,0 +1,65 @@
+@function _var($map_name, $key) {
+    $map: map_get($variables, $map_name);
+
+    @if map_has_key($map, $key) == false {
+        @error "The key `#{$key}` was not found in #{map_keys($map)}"
+    }
+
+    //@return map_get($map, $key);
+    @return var(--#{$map_name}-#{$key});
+}
+
+
+
+
+@function color($name, $lightness: '', $map_name: 'colors') {
+
+    $map: map_get($variables, $map_name);
+    $key: '';
+
+    @if $lightness == '' {
+        $key: '#{$name}';
+    } @else {
+        $key: '#{$name}-#{$lightness}';
+    }
+
+    @return _var($map_name, $key);
+}
+
+
+
+
+@function text-color($background: 'base', $lightness: '') {
+    @return color($background, $lightness, 'text');
+}
+
+
+
+
+$variables: (
+        'colors': (
+                'primary-light': rgba(99, 143, 190, 1.0),
+                'primary': rgba(48, 97, 145, 1.0),
+                'primary-dark': rgba(0, 56, 96, 1.0),
+                'secondary-light': rgba(163, 240, 158, 1.0),
+                'secondary': rgba(117, 189, 102, 1.0),
+                'secondary-dark': rgba(63, 140, 68, 1.0),
+                'border-light': rgba(0, 0, 0, .02),
+                'border': rgba(0, 0, 0, .05),
+                'border-dark': rgba(0, 0, 0, .15),
+        ),
+        'text': (
+                'base': #000000,
+                'primary-light': #000000,
+                'primary': #FFFFFF,
+                'primary-dark': #FFFFFF,
+                'secondary-light': #000000,
+                'secondary': #000000,
+                'secondary-dark': #000000,
+        ),
+        'calendar': (
+                'one-hour-height': 3.5rem,
+        ),
+);
+
+$one-hour-height: _var('calendar', 'one-hour-height');
