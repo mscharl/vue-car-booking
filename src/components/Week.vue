@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <section class="Week__column" v-for="day in days">
-                    <div class="Week__hour Week__hour--show-half-line" v-for="hour in hoursForDay(day)"></div>
+                    <day-times :day="day"></day-times>
                 </section>
             </section>
         </div>
@@ -28,9 +28,21 @@
 
 <script>
     import moment from 'moment';
+    import DayTimes from './DayTimes.vue';
 
     export default {
         name: 'Week',
+
+        props: {
+            firstDay: {
+                type   : moment,
+                default: () => moment(),
+            },
+        },
+
+        components: {
+            DayTimes,
+        },
 
         data() {
             return {}
@@ -38,7 +50,7 @@
 
         computed: {
             days() {
-                return [1, 2, 3, 4, 5, 6, 7].map((day) => moment().isoWeekday(day));
+                return [1, 2, 3, 4, 5, 6, 7].map((day) => this.firstDay.clone().isoWeekday(day));
             },
 
             hours() {
@@ -50,11 +62,6 @@
         methods: {
             dayIsToday(day) {
                 return day.isSame(moment(), 'day');
-            },
-
-            hoursForDay(day) {
-                return this.hours
-                           .map((hour) => day.clone().hours(hour).minutes(0))
             },
 
             formattedHourFor(hour) {
@@ -138,27 +145,11 @@
         &__hour {
             height: $one-hour-height;
 
-            position: relative;
-
             border-bottom: 1px solid color('border');
             padding: 0 .375em;
 
             &:nth-child(odd) {
                 background-color: color('border', 'light');
-            }
-
-            &--show-half-line {
-                &:after {
-                    display: block;
-                    content: '';
-
-                    position: absolute;
-                    top: 50%;
-                    left: 0;
-                    right: 0;
-
-                    border-top: 1px dotted color('border');
-                }
             }
         }
     }

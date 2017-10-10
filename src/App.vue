@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="Display">
-        <week></week>
+        <week :first-day="currentFirstDayOfTheWeek" :key="currentFirstDayOfTheWeek.toISOString()"></week>
     </div>
 </template>
 
@@ -15,10 +15,11 @@
         },
         data() {
             return {
+                currentFirstDayOfTheWeek: moment().isoWeekday(1),
             }
         },
 
-        computed: {}
+        computed: {},
     }
 </script>
 
