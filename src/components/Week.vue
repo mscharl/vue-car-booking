@@ -109,7 +109,7 @@
 
         &__day-date {
             display: inline-block;
-            font-size: 3.5em;
+            font-size: 2em;
 
             transform: translateX(-.08em);
 
