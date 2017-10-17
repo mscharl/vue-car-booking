@@ -1,22 +1,19 @@
 <template>
     <div id="app" class="Display">
-        <week :first-day="currentFirstDayOfTheWeek" :key="currentFirstDayOfTheWeek.toISOString()"></week>
+        <transition>
+            <router-view name="calendar"></router-view>
+        </transition>
     </div>
 </template>
 
 <script>
     import moment from 'moment';
-    import Week from './components/Week.vue';
 
     export default {
-        name      : 'VueCarBooking',
-        components: {
-            Week,
-        },
+        name: 'VueCarBooking',
+
         data() {
-            return {
-                currentFirstDayOfTheWeek: moment().isoWeekday(1),
-            }
+            return {}
         },
 
         computed: {},
@@ -36,6 +33,9 @@
             }
         }
     }
+
+
+
 
     .Display {
         display: flex;
