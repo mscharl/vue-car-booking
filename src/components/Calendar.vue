@@ -4,6 +4,7 @@
     import * as CalendarGetters from '../core/store/calendar/types/getters';
 
     import Week from './Week.vue';
+    import { firstDayFromRoute } from '../helper';
 
     export default {
         name: 'Calendar',
@@ -19,10 +20,15 @@
         },
 
         beforeRouteUpdate(to, from, next) {
-            const firstFrom = this.firstDayByParams(from);
-            const firstTo   = this.firstDayByParams(to);
+            if(to.name !== from.name) {
+                this.transitionName = 'fade';
+            }
+            else {
+                const firstFrom = firstDayFromRoute(from);
+                const firstTo   = firstDayFromRoute(to);
 
-            this.transitionName = firstFrom < firstTo ? 'next-calendar' : 'prev-calendar';
+                this.transitionName = firstFrom < firstTo ? 'next-calendar' : 'prev-calendar';
+            }
 
             next();
         },
