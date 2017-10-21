@@ -1,6 +1,8 @@
 import Vue from 'vue';
+import { sync as storeRouterSync } from 'vuex-router-sync';
 // Import Core Components
 import router from './core/router';
+import store from './core/store';
 // Import the App Component
 import App from './App.vue';
 // Initialize moment.js
@@ -10,6 +12,9 @@ import 'moment/locale/de-at';
 moment.locale('de-at');
 
 
+// Sync store with router
+storeRouterSync(store, router);
+
 // Initialize the app
 new Vue({
     name  : 'App',
@@ -17,4 +22,5 @@ new Vue({
     render: (h) => h(App),
 
     router,
+    store,
 });

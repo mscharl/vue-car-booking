@@ -22,9 +22,7 @@
     @import './scss/variables';
     @import './scss/transitions';
 
-
-
-
+    // Map every variable into a css variable
     :root {
         @each $map_name, $map in $variables {
             @each $key, $value in $map {
@@ -32,7 +30,6 @@
             }
         }
     }
-
 
 
 

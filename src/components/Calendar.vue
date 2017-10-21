@@ -1,5 +1,7 @@
 <script>
     import moment from 'moment';
+    import { mapGetters } from 'vuex';
+    import * as CalendarGetters from '../core/store/calendar/types/getters';
 
     import Week from './Week.vue';
 
@@ -26,27 +28,14 @@
         },
 
         computed: {
-            firstDay() {
-                return this.firstDayByParams(this.$route);
-            },
+            ...mapGetters({
+                firstDay: CalendarGetters.FIRST_DAY,
+            }),
 
             calendarComponent() {
                 switch(this.$route.name) {
                     case 'week':
                         return 'Week'
-                }
-            },
-        },
-
-        methods: {
-            firstDayByParams(route) {
-                const params = route.params;
-                switch(route.name) {
-                    case 'week':
-                        return moment().year(params.year).week(params.week).weekday(0);
-
-                    default:
-                        return 0;
                 }
             },
         },
