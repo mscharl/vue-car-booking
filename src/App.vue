@@ -1,8 +1,6 @@
 <template>
     <div id="app" class="Display">
-        <transition>
-            <router-view name="calendar"></router-view>
-        </transition>
+        <router-view name="calendar"></router-view>
     </div>
 </template>
 
@@ -22,6 +20,7 @@
 
 <style lang="scss">
     @import './scss/variables';
+    @import './scss/transitions';
 
 
 

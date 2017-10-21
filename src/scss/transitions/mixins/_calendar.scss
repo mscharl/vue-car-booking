@@ -1,0 +1,31 @@
+@mixin createCalendarTransition($is_prev, $x) {
+    $duration: .25s;
+
+    $enterX: $x;
+    $leaveX: -$x;
+    $prefix: next;
+
+    @if $is_prev {
+        $enterX: -$x;
+        $leaveX: $x;
+        $prefix: prev;
+    }
+
+    .#{$prefix}-calendar-enter-active {
+        transition: opacity $duration ease-out, transform $duration ease-out;
+    }
+
+    .#{$prefix}-calendar-leave-active {
+        transition: opacity $duration ease-in, transform $duration ease-in;
+    }
+
+    .#{$prefix}-calendar-enter {
+        opacity: 0;
+        transform: translateX($enterX);
+    }
+
+    .#{$prefix}-calendar-leave-to {
+        opacity: 0;
+        transform: translateX($leaveX);
+    }
+}

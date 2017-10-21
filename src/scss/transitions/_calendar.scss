@@ -1,0 +1,7 @@
+@import "mixins/calendar";
+
+// For next animation
+@include createCalendarTransition(false, 3em);
+
+// For prev animation
+@include createCalendarTransition(true, 3em);

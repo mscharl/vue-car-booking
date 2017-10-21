@@ -50,7 +50,8 @@
 
         computed: {
             days() {
-                return [1, 2, 3, 4, 5, 6, 7].map((day) => this.firstDay.clone().isoWeekday(day));
+                console.log(this.firstDay.toString());
+                return [0, 1, 2, 3, 4, 5, 6].map((day) => this.firstDay.clone().weekday(day));
             },
 
             hours() {
