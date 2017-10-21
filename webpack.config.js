@@ -42,7 +42,7 @@ module.exports = {
     },
     devServer  : {
         historyApiFallback: true,
-        noInfo            : true,
+        stats             : 'normal',
         progress          : true,
     },
     performance: {
