@@ -6,9 +6,7 @@
             </h1>
         </div>
         <div class="Toolbar__row Toolbar__row--subbar">
-            <h2 class="Toolbar__subtitle">
-                <current-date-range></current-date-range>
-            </h2>
+            <current-date-range class="Toolbar__subtitle"></current-date-range>
             <div class="Toolbar__nav">
                 <calendar-nav></calendar-nav>
             </div>

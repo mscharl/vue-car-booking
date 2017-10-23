@@ -4,33 +4,14 @@
     import * as CalendarGetters from '../core/store/calendar/types/getters';
 
     import Week from './Week.vue';
-    import { firstDayFromRoute } from '../helper';
+    import CalendarTransition from './transitions/CalendarTransition.vue';
 
     export default {
         name: 'Calendar',
 
         components: {
+            CalendarTransition,
             Week,
-        },
-
-        data() {
-            return {
-                transitionName: 'fade',
-            };
-        },
-
-        beforeRouteUpdate(to, from, next) {
-            if(to.name !== from.name) {
-                this.transitionName = 'fade';
-            }
-            else {
-                const firstFrom = firstDayFromRoute(from);
-                const firstTo   = firstDayFromRoute(to);
-
-                this.transitionName = firstFrom < firstTo ? 'next-calendar' : 'prev-calendar';
-            }
-
-            next();
         },
 
         computed: {
@@ -49,19 +30,13 @@
         render(createElement) {
             const route = this.$route;
 
-            return createElement('transition', {
-                props: {
-                    name  : this.transitionName,
-                    mode  : 'out-in',
-                    appear: true,
-                },
-            }, [
+            return createElement('calendar-transition', [
                 createElement(this.calendarComponent, {
                     key  : route.path,
                     props: {
                         firstDay: this.firstDay.clone(),
                     },
-                }),
+                })
             ]);
         },
     }

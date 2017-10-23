@@ -2,9 +2,15 @@
     import { mapGetters } from 'vuex';
     import * as calendarTypes from '../core/store/calendar/types/getters';
 
+    import CalendarTransition from './transitions/CalendarTransition.vue';
+
 
     export default {
         name: 'CurrentDateRange',
+
+        components: {
+            CalendarTransition,
+        },
 
         computed: {
             ...mapGetters({
@@ -38,7 +44,9 @@
                 }
             })();
 
-            return createElement('span', date);
+            return createElement('calendar-transition', [
+                createElement('span', { key: date }, date),
+            ]);
         },
     }
 </script>
