@@ -1,5 +1,5 @@
 @mixin createCalendarTransition($is_prev, $x) {
-    $duration: .25s;
+    $duration: .15s;
 
     $enterX: $x;
     $leaveX: -$x;

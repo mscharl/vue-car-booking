@@ -50,7 +50,6 @@
 
         computed: {
             days() {
-                console.log(this.firstDay.toString());
                 return [0, 1, 2, 3, 4, 5, 6].map((day) => this.firstDay.clone().weekday(day));
             },
 
@@ -86,6 +85,9 @@
         width: 100%;
         height: 100%;
 
+        will-change: transform, opacity;
+
+
         &__row {
             display: flex;
             flex-direction: row;
@@ -104,8 +106,6 @@
         &__scroller {
             overflow: auto;
             flex: 1 1 100%;
-
-            will-change: transform;
         }
 
         &__day-date {

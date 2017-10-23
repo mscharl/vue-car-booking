@@ -1,14 +1,20 @@
 <template>
     <div id="app" class="Display">
+        <toolbar></toolbar>
         <router-view name="calendar"></router-view>
     </div>
 </template>
 
 <script>
     import moment from 'moment';
+    import Toolbar from './components/Toolbar.vue';
 
     export default {
         name: 'VueCarBooking',
+
+        components: {
+            Toolbar,
+        },
 
         data() {
             return {}
@@ -33,8 +39,10 @@
 
 
 
+
     .Display {
         display: flex;
+        flex-direction: column;
 
         margin: 0;
         padding: 0;
