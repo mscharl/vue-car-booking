@@ -3,6 +3,7 @@
     import { mapGetters } from 'vuex';
     import * as CalendarGetters from '../core/store/calendar/types/getters';
 
+    import Month from './Month.vue';
     import Days from './Days.vue';
     import Day from './Day.vue';
     import CalendarTransition from './transitions/CalendarTransition.vue';
@@ -14,6 +15,7 @@
             CalendarTransition,
             Day,
             Days,
+            Month,
         },
 
         computed: {
@@ -27,6 +29,8 @@
                         return 'Day';
                     case 'week':
                         return 'Days';
+                    case 'month':
+                        return 'Month';
                     default:
                         throw new Error('UNSUPPORTED ROUTE');
                 }

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Calendar from '../components/Calendar.vue';
-import Empty from '../components/Empty.vue';
 
 import * as FILTER from './router/filter';
 
@@ -30,8 +29,7 @@ export default new VueRouter({
             name      : 'month',
             path      : '/:year-:month',
             components: {
-                // calendar: Calendar,
-                calendar: Empty,
+                calendar: Calendar,
             },
         }, {
             path       : '*',

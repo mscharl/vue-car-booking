@@ -24,3 +24,5 @@ new Vue({
     router,
     store,
 });
+
+window.__moment = moment;
