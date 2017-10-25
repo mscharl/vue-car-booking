@@ -3,12 +3,7 @@
         <header class="Week__row Week__row--header">
             <div class="Week__column Week__column--time"></div>
             <section class="Week__column" v-for="day in days">
-                <div class="Week__day-name">
-                    {{ day.format('dddd') }}
-                </div>
-                <div class="Week__day-date" :class="{'Week__day-date--today': dayIsToday(day)}">
-                    {{ day.format('D') }}
-                </div>
+                <day-header :day="day"></day-header>
             </section>
         </header>
         <div class="Week__scroller">
@@ -28,6 +23,7 @@
 
 <script>
     import moment from 'moment';
+    import DayHeader from './DayHeader.vue';
     import DayTimes from './DayTimes.vue';
 
     export default {
@@ -41,6 +37,7 @@
         },
 
         components: {
+            DayHeader,
             DayTimes,
         },
 
@@ -60,10 +57,6 @@
         },
 
         methods: {
-            dayIsToday(day) {
-                return day.isSame(moment(), 'day');
-            },
-
             formattedHourFor(hour) {
                 return moment().hours(hour).minutes(0).format('HH:mm');
             },
@@ -106,18 +99,6 @@
         &__scroller {
             overflow: auto;
             flex: 1 1 100%;
-        }
-
-        &__day-date {
-            display: inline-block;
-            font-size: 2em;
-
-            transform: translateX(-.08em);
-
-            &--today {
-                color: color('secondary');
-            }
-
         }
 
         &__row--content &__column {
