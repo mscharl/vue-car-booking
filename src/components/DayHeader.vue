@@ -31,6 +31,8 @@
 </script>
 
 <style lang="scss">
+    @import "../scss/variables";
+
     .Day-header {
         &__date {
             display: inline-block;
