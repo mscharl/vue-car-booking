@@ -3,7 +3,8 @@
     import { mapGetters } from 'vuex';
     import * as CalendarGetters from '../core/store/calendar/types/getters';
 
-    import Week from './Week.vue';
+    import Days from './Days.vue';
+    import Day from './Day.vue';
     import CalendarTransition from './transitions/CalendarTransition.vue';
 
     export default {
@@ -11,7 +12,8 @@
 
         components: {
             CalendarTransition,
-            Week,
+            Day,
+            Days,
         },
 
         computed: {
@@ -21,8 +23,10 @@
 
             calendarComponent() {
                 switch(this.$route.name) {
+                    case 'day':
+                        return 'Day';
                     case 'week':
-                        return 'Week';
+                        return 'Days';
                     default:
                         throw new Error('UNSUPPORTED ROUTE');
                 }
@@ -31,10 +35,11 @@
 
         render(createElement) {
             const route = this.$route;
+            const key   = btoa(`${route.path}__${this._uid}`);
 
             return createElement('calendar-transition', [
                 createElement(this.calendarComponent, {
-                    key  : route.path,
+                    key,
                     props: {
                         firstDay: this.firstDay.clone(),
                     },

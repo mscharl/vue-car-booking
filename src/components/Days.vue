@@ -1,19 +1,19 @@
 <template>
-    <section class="Week">
-        <header class="Week__row Week__row--header">
-            <div class="Week__column Week__column--time"></div>
-            <section class="Week__column" v-for="day in days">
+    <section class="Days">
+        <header class="Days__row Days__row--header">
+            <div class="Days__column Days__column--time"></div>
+            <section class="Days__column" v-for="day in days">
                 <day-header :day="day"></day-header>
             </section>
         </header>
-        <div class="Week__scroller">
-            <section class="Week__row Week__row--content">
-                <div class="Week__column Week__column--time">
-                    <div class="Week__hour" v-for="hour in hours">
+        <div class="Days__scroller">
+            <section class="Days__row Days__row--content">
+                <div class="Days__column Days__column--time">
+                    <div class="Days__hour" v-for="hour in hours">
                         {{ formattedHourFor(hour) }}
                     </div>
                 </div>
-                <section class="Week__column" v-for="day in days">
+                <section class="Days__column" v-for="day in days">
                     <day-times :day="day"></day-times>
                 </section>
             </section>
@@ -27,12 +27,19 @@
     import DayTimes from './DayTimes.vue';
 
     export default {
-        name: 'Week',
+        name: 'Days',
 
         props: {
             firstDay: {
                 type   : moment,
                 default: () => moment(),
+            },
+            display : {
+                type   : String,
+                default: 'week',
+                validator(value) {
+                    return ['week', 'single'].indexOf(value) !== -1
+                },
             },
         },
 
@@ -47,7 +54,16 @@
 
         computed: {
             days() {
-                return [0, 1, 2, 3, 4, 5, 6].map((day) => this.firstDay.clone().weekday(day));
+                switch(this.display) {
+                    case 'week':
+                        return [0, 1, 2, 3, 4, 5, 6].map((day) => this.firstDay.clone().weekday(day));
+
+                    case 'single':
+                        return [this.firstDay.clone()];
+
+                    default:
+                        throw new Error('Unhandled display type')
+                }
             },
 
             hours() {
@@ -70,7 +86,7 @@
 
 
 
-    .Week {
+    .Days {
         display: flex;
 
         flex-direction: column;

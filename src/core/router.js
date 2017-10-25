@@ -14,11 +14,10 @@ export default new VueRouter({
     // mode  : 'history',
     routes: [
         {
-            name      : 'month',
-            path      : '/:year-:month',
+            name      : 'day',
+            path      : '/:year-:month-:day',
             components: {
-                // calendar: Calendar,
-                calendar: Empty,
+                calendar: Calendar,
             },
         }, {
             name       : 'week',
@@ -28,8 +27,8 @@ export default new VueRouter({
                 calendar: Calendar,
             },
         }, {
-            name      : 'day',
-            path      : '/:year-:month-:day',
+            name      : 'month',
+            path      : '/:year-:month',
             components: {
                 // calendar: Calendar,
                 calendar: Empty,
