@@ -22,7 +22,9 @@
             calendarComponent() {
                 switch(this.$route.name) {
                     case 'week':
-                        return 'Week'
+                        return 'Week';
+                    default:
+                        throw new Error('UNSUPPORTED ROUTE');
                 }
             },
         },

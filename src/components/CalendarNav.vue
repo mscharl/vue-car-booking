@@ -14,7 +14,9 @@
     import AIconButton from './atoms/AIconButton.vue';
 
     const TODAY_TEXT = {
-        week: 'Diese Woche',
+        month: 'Diesen Monat',
+        week : 'Diese Woche',
+        day  : 'Heute',
     };
 
     export default {
@@ -60,10 +62,23 @@
 
             getLinkParams(date) {
                 switch(this.$route.name) {
+                    case 'month':
+                        return {
+                            year : date.year(),
+                            month: date.month(),
+                        };
+
                     case 'week':
                         return {
                             year: date.year(),
                             week: date.week(),
+                        };
+
+                    case 'day':
+                        return {
+                            year : date.year(),
+                            month: date.month(),
+                            day  : date.date(),
                         };
 
                     default:

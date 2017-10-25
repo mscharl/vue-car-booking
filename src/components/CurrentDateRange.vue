@@ -23,6 +23,9 @@
                 const startDate = this.firstDay.clone();
 
                 switch(this.$route.name) {
+                    case 'month':
+                        return startDate.format('MMMM YYYY');
+
                     case 'week':
                         const fullFormat = 'Do MMMM YYYY';
                         let endDate      = startDate.clone().weekday(6);
@@ -34,10 +37,11 @@
                         else if(startDate.month() !== endDate.month()) {
                             return `${startDate.format('Do MMMM')} - ${endString}`;
                         }
-                        else {
-                            return `${startDate.format('Do')} - ${endString}`;
-                        }
-                        break;
+
+                        return `${startDate.format('Do')} - ${endString}`;
+
+                    case 'day':
+                        return startDate.format('Do MMMM YYYY');
 
                     default:
                         throw new Error('Invalid route');

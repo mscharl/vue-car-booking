@@ -2,7 +2,9 @@ import * as types from './types/getters';
 import { firstDayFromRoute } from '../../../helper';
 
 const ROUTENAME_DURATION_MAP = {
-    week: 'weeks',
+    month: 'months',
+    week : 'weeks',
+    day  : 'days',
 };
 
 export default {

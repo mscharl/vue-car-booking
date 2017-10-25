@@ -4,26 +4,36 @@
         functional: true,
 
         props: {
-            tag: {
+            tag   : {
                 type    : String,
                 required: true,
                 default : 'button',
             },
-            to : {
+            to    : {
                 type    : [String, Object],
                 required: false,
+            },
+            active: {
+                type    : Boolean,
+                required: false,
+                default : false,
             },
         },
 
         render(createElement, context) {
+            const classes = {
+                'a-button'        : true,
+                'a-button--active': context.props.active,
+            };
+
             return context.props.to ? createElement('router-link', {
-                'class': 'a-button',
+                'class': classes,
                 props  : {
                     tag: context.props.tag,
                     to : context.props.to,
                 },
             }, context.children) : createElement(context.props.tag, {
-                'class': 'a-button',
+                'class': classes,
             }, context.children);
         },
     }
@@ -92,6 +102,20 @@
 
             will-change: transform, opacity;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        &--active {
+            &:after {
+                display: block;
+                content: '';
+
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+
+                border-top: 2px solid currentColor;
+            }
         }
     }
 
