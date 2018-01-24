@@ -56,7 +56,8 @@
 
     &:not(:disabled) {
         background-color: transparent;
-        color: color(primary);
+        //color: color(primary);
+        color: inherit;
 
         will-change: transform, opacity;
         -webkit-tap-highlight-color: transparent;
