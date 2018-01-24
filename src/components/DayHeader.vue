@@ -29,21 +29,3 @@
         },
     }
 </script>
-
-<style lang="scss">
-    @import "../scss/variables";
-
-    .Day-header {
-        &__date {
-            display: inline-block;
-            font-size: 2em;
-
-            transform: translateX(-.08em);
-
-            &--today {
-                color: color('secondary');
-            }
-
-        }
-    }
-</style>

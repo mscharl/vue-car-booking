@@ -88,16 +88,3 @@
         },
     }
 </script>
-
-<style lang="scss">
-    .Calendar-nav {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        margin: 0;
-        padding: 0;
-
-        list-style: none;
-    }
-</style>

@@ -36,28 +36,3 @@
         },
     }
 </script>
-
-<style lang="scss">
-    .a-icon-button {
-        color: inherit;
-
-        -webkit-tap-highlight-color: transparent;
-
-        display: flex;
-        position: relative;
-        align-items: center;
-        justify-content: center;
-
-        width: 4.8rem;
-        height: 4.8rem;
-
-        padding: 1.2rem;
-
-        outline: none;
-        font-size: 2.4rem;
-
-        cursor: pointer;
-
-        user-select: none;
-    }
-</style>

@@ -88,11 +88,3 @@
         },
     }
 </script>
-
-<style lang="scss">
-    .Calendar-style {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-</style>
