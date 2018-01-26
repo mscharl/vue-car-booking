@@ -21,7 +21,7 @@
 
         render(createElement, context) {
             const classes = [
-                'a-icon-button', 'material-icons',
+                'a-icon-button', 'material-icons', context.data.staticClass,
             ];
 
             return context.props.to ? createElement('router-link', {
@@ -32,7 +32,10 @@
                 },
             }, [context.props.icon]) : createElement(context.props.tag, {
                 'class': classes,
+                on     : {
+                    click: context.listeners.click,
+                },
             }, [context.props.icon]);
-        },
+        }
     }
 </script>
