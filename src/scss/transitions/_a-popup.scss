@@ -1,0 +1,42 @@
+
+.a-popup-enter, .a-popup-leave-to {
+    opacity: .99;
+
+    .a-popup__backdrop {
+        opacity: 0;
+    }
+
+    .a-popup {
+        transform-origin: center top;
+        transform: translateY(-2rem);
+        opacity: 0;
+    }
+}
+
+
+
+
+.a-popup-enter-active {
+    transition: opacity .387s ease-out;
+
+    .a-popup__backdrop {
+        transition: opacity .3s ease-out;
+    }
+    .a-popup {
+        transition: transform .3s .2s ease-out, opacity .187s .2s ease-out;
+    }
+}
+
+
+
+
+.a-popup-leave-active {
+    transition: opacity .387s ease-out;
+
+    .a-popup__backdrop {
+        transition: opacity .3s .187s ease-out;
+    }
+    .a-popup {
+        transition: transform .3s ease-out, opacity .187s ease-out;
+    }
+}
