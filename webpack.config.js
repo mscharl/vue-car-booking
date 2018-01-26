@@ -42,18 +42,23 @@ module.exports = {
                 loader : 'babel-loader',
                 exclude: /node_modules/,
             }, {
+                test   : /\.ts$/,
+                loaders: ['babel-loader', 'ts-loader'],
+                exclude: /node_modules/,
+            }, {
                 test   : /\.(png|jpg|gif|svg)$/,
                 loader : 'file-loader',
                 options: {
                     name: '[name].[ext]?[hash]',
                 },
-            }
+            },
         ],
     },
     resolve    : {
-        alias: {
+        alias     : {
             'vue$': 'vue/dist/vue.esm.js',
         },
+        extensions: ['*', '.js', '.ts', '.vue', '.json'],
     },
     devServer  : {
         historyApiFallback: true,
