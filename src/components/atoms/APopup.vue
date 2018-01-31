@@ -3,15 +3,15 @@
         <div class="a-popup__container">
             <aside class="a-popup__backdrop"></aside>
             <div class="a-popup__wrapper">
-                <div class="a-popup">
-                    <header class="a-popup__header">
+                <div class="a-popup" :class="dynamicClass()">
+                    <header class="a-popup__header" :class="dynamicClass('header')">
                         <h1 class="a-popup__title" v-if="title">{{ title }}</h1>
                         <a-icon-button tag="i" icon="close" class="a-popup__close" @click="close"></a-icon-button>
                     </header>
-                    <section class="a-popup__content">
+                    <section class="a-popup__content" :class="dynamicClass('content')">
                         <slot></slot>
                     </section>
-                    <footer class="a-popup__footer">
+                    <footer class="a-popup__footer" :class="dynamicClass('footer')">
                         <slot name="footer"></slot>
                     </footer>
                 </div>
@@ -31,7 +31,15 @@
         },
 
         props: {
-            title: String,
+            title: {
+                type    : String,
+                required: false,
+            },
+
+            popupClass: {
+                type    : String,
+                required: false,
+            },
         },
 
         data() {
@@ -75,6 +83,18 @@
                 if(event.keyCode === KeyCode.ESC) {
                     this.close();
                 }
+            },
+
+            dynamicClass(appendix) {
+                if(!this.popupClass) {
+                    return
+                }
+
+                if(!appendix) {
+                    return this.popupClass
+                }
+
+                return `${this.popupClass}__${appendix}`;
             },
         },
     }
