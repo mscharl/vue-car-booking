@@ -1,7 +1,7 @@
 .a-popup {
 
-    max-width: 62.5%;
-    min-width: 37.5%;
+    max-width: 37.5%;
+    min-width: 25rem;
     margin: auto;
 
     background: white;
@@ -13,16 +13,17 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-start;
 
         padding: 1rem 1rem;
     }
     &__header {
         @extend %popup-bar;
+        justify-content: flex-start;
         border-bottom: 1px solid color('border', 'dark');
     }
     &__footer {
         @extend %popup-bar;
+        justify-content: flex-end;
         border-top: 1px solid color('border', 'dark');
     }
 
@@ -78,5 +79,9 @@
         //justify-content: center;
 
         padding: 5rem 0;
+    }
+
+    &__content {
+        padding: 1.6rem 1rem;
     }
 }

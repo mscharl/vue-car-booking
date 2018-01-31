@@ -1,9 +1,13 @@
 @import "variables";
 @import "transitions";
+// Third party
+@import "../../node_modules/flatpickr/dist/themes/material_blue.css";
+@import "third-party/flatpickr";
 
 // app
 @import "global";
 @import "App";
+
 // atom-component-styles
 @import "atoms/a-button";
 @import "atoms/a-icon-button";
@@ -17,3 +21,4 @@
 @import "components/Days";
 @import "components/Month";
 @import "components/Toolbar";
+@import "components/popups/BookingPopup";

@@ -261,7 +261,7 @@ span.flatpickr-weekday {
 .flatpickr-day.notAllowed,
 .flatpickr-day.notAllowed.prevMonthDay,
 .flatpickr-day.notAllowed.nextMonthDay {
-    color: color('border', 'dark');
+    color: color('border', 'darker');
 }
 
 
@@ -269,7 +269,7 @@ span.flatpickr-weekday {
 
 .flatpickr-day.disabled,
 .flatpickr-day.disabled:hover {
-    color: color('border', 'dark');
+    color: color('border');
 }
 
 
