@@ -6,7 +6,7 @@
             </legend>
             <div class="a-form__input-row">
                 <flatpickr class="a-form__input" v-model="booking.starts_at" :config="startDateConfig"></flatpickr>
-                <!--<flatpickr class="a-form__input" v-model="datetimeEnd" :config="endDateConfig"></flatpickr>-->
+                <flatpickr class="a-form__input" v-model="booking.ends_at" :config="endDateConfig"></flatpickr>
             </div>
         </fieldset>
 
@@ -73,6 +73,13 @@
                 return {
                     ...FLATPICKR_BASE_CONFIG,
                     minDate: this.minStartDate,
+                }
+            },
+
+            endDateConfig() {
+                return {
+                    ...FLATPICKR_BASE_CONFIG,
+                    minDate: this.booking.starts_at,
                 }
             },
         },

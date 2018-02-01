@@ -9,8 +9,8 @@
     &__input-row &__input {
         flex: 1 1 auto;
 
-        &:not(:first-child) {
-            margin-left: .625em;
+        &:not(:last-child) {
+            margin-right: .625em;
         }
     }
 
