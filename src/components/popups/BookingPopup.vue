@@ -4,8 +4,10 @@
             <legend class="BookingPopup__fieldset__legend">
                 Buchungszeitraum
             </legend>
-            <flatpickr v-model="datetime" :config="startDateConfig" @change="updateStartDate"></flatpickr>
-            <flatpickr v-model="datetimeEnd" :config="endDateConfig"></flatpickr>
+            <div class="a-form__input-row">
+                <flatpickr class="a-form__input" v-model="booking.starts_at" :config="startDateConfig"></flatpickr>
+                <!--<flatpickr class="a-form__input" v-model="datetimeEnd" :config="endDateConfig"></flatpickr>-->
+            </div>
         </fieldset>
 
         <template slot="footer">
@@ -20,7 +22,8 @@
 <script>
     import APopup from '../atoms/APopup.vue';
     import Flatpickr from 'vue-flatpickr-component';
-    import { German } from 'flatpickr/dist/l10n/de';
+    import * as BookingModelFactory from '../../factories/BookingModelFactory';
+    import FLATPICKR_BASE_CONFIG from '../../constants/FlatpickrBaseConfig'
 
     export default {
         name      : 'BookingPopup',
@@ -30,57 +33,46 @@
         },
 
         data() {
-            const now     = new Date();
-            const minutes = Math.ceil((now.getMinutes() + 1) / 15) * 15;
-            const then    = (new Date()).setHours(now.getHours() + 1, minutes, 0);
-            now.setMinutes(minutes, 0)
-
             return {
-                showPopup  : true,
-                datetime   : now,
-                datetimeEnd: null,
+                showPopup : true,
+                now       : new Date(),
+                nowTimeout: null,
 
-                datetimeBaseConfig: {
-                    enableTime     : true,
-                    time_24hr      : true,
-                    minuteIncrement: 15,
-                    locale         : German,
-                },
+                booking: BookingModelFactory.createFromNothing(),
             }
         },
 
-        watch: {
-            datetime(value) {
-                const now        = new Date(value);
-                this.datetimeEnd = (new Date(now)).setHours(now.getHours() + 1);
-                console.log(new Date(this.datetimeEnd));
-            },
+        mounted() {
+            const setNow = () => {
+                const now              = new Date();
+                const currentSeconds   = now.getSeconds();
+                const timeUntilNextSet = Math.max(1, (60 - currentSeconds)) * 1000;
+
+                this.now        = now;
+                this.nowTimeout = setTimeout(setNow, timeUntilNextSet);
+            };
+
+            setNow();
+        },
+
+        beforeDestroy() {
+            clearTimeout(this.nowTimeout);
         },
 
         computed: {
             popupTitle() {
+                // Prepared for editing an existing booking
                 return 'Neue Buchung'
             },
 
             minStartDate() {
-                return new Date();
-            },
-
-            minEndDate() {
-                return this.datetime;
+                return this.now;
             },
 
             startDateConfig() {
                 return {
-                    ...this.datetimeBaseConfig,
+                    ...FLATPICKR_BASE_CONFIG,
                     minDate: this.minStartDate,
-                }
-            },
-
-            endDateConfig() {
-                return {
-                    ...this.datetimeBaseConfig,
-                    minDate: this.minEndDate,
                 }
             },
         },
@@ -88,10 +80,6 @@
         methods: {
             dismissPopup() {
                 this.showPopup = false
-            },
-
-            updateStartDate(event) {
-                console.log(event);
             },
         },
     }
