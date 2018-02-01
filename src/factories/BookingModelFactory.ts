@@ -12,5 +12,5 @@ export function createFromNothing(now: Date = new Date(), durationInMinutes: num
     return {
         starts_at: startDate,
         ends_at  : endDate,
-    }
+    };
 }

@@ -7,5 +7,5 @@ export default {
     locale         : German,
     altFormat      : 'd. M Y – H:i',
     altInput       : true,
-    dateFormat     : 'Y-m-d H:i',
-}
+    dateFormat     : 'Y-m-d H:i:00',
+};

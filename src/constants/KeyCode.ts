@@ -1,4 +1,4 @@
-type KeyCode = number
+type KeyCode = number;
 
 export const ESC: KeyCode = 27;
 export const ENTER: KeyCode = 13;
