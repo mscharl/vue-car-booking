@@ -36,7 +36,7 @@
                 required: false,
             },
 
-            popupClass: {
+            'popup-class': {
                 type    : String,
                 required: false,
             },
