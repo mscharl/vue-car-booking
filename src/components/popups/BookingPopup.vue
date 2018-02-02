@@ -21,9 +21,8 @@
 
 <script>
     import APopup from '../atoms/APopup.vue';
-    import Flatpickr from 'vue-flatpickr-component';
+    import Flatpickr from '../_elements/Flatpickr.vue';
     import * as BookingModelFactory from '../../factories/BookingModelFactory';
-    import FLATPICKR_BASE_CONFIG from '../../constants/FlatpickrBaseConfig'
 
     export default {
         name      : 'BookingPopup',
@@ -71,14 +70,12 @@
 
             startDateConfig() {
                 return {
-                    ...FLATPICKR_BASE_CONFIG,
                     minDate: this.minStartDate,
                 }
             },
 
             endDateConfig() {
                 return {
-                    ...FLATPICKR_BASE_CONFIG,
                     minDate: this.booking.starts_at,
                 }
             },
