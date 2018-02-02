@@ -1,0 +1,54 @@
+.PeriodBar {
+    font-size: 1.6rem;
+
+    &__day {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        border-top: 1px solid color('border');
+        border-left: 1px solid color('border');
+    }
+
+    &__hour {
+        position: relative;
+
+        $width: 100% / 24;
+        flex: 1 1 $width;
+
+        &:before {
+            display: block;
+            content: '';
+            padding-top: 100%;
+        }
+    }
+
+    &__quarter-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    &__quarter {
+        flex: 0 0 50%;
+        width: 50%;
+        height: 50%;
+
+        border-right: 1px solid color('border');
+        border-bottom: 1px solid color('border');
+
+        &--reserved {
+            background-color: color('secondary');
+        }
+    }
+}

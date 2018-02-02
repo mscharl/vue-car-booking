@@ -8,6 +8,7 @@
                 <flatpickr class="a-form__input" v-model="booking.starts_at" :config="startDateConfig"></flatpickr>
                 <flatpickr class="a-form__input" v-model="booking.ends_at" :config="endDateConfig"></flatpickr>
             </div>
+            <period-bar :start-date="booking.starts_at" :end-date="booking.ends_at"></period-bar>
         </fieldset>
 
         <template slot="footer">
@@ -23,10 +24,12 @@
     import APopup from '../atoms/APopup.vue';
     import Flatpickr from '../_elements/Flatpickr.vue';
     import * as BookingModelFactory from '../../factories/BookingModelFactory';
+    import PeriodBar from '../_elements/PeriodBar.vue';
 
     export default {
         name      : 'BookingPopup',
         components: {
+            PeriodBar,
             APopup,
             Flatpickr,
         },
