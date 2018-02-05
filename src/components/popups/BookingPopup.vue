@@ -12,10 +12,8 @@
         </fieldset>
 
         <template slot="footer">
-            <div>
-                Test
-            </div>
-            <button>Test</button>
+            <a-button @click="dismissPopup">Abbrechen</a-button>
+            <a-primary-button @click="requestBooking" :other="booking">Buchen</a-primary-button>
         </template>
     </a-popup>
 </template>
@@ -24,12 +22,16 @@
     import APopup from '../atoms/APopup.vue';
     import Flatpickr from '../_elements/Flatpickr.vue';
     import * as BookingModelFactory from '../../factories/BookingModelFactory';
+    import AButton from '../atoms/AButton.vue';
+    import APrimaryButton from '../atoms/APrimaryButton.vue';
     //    import PeriodBar from '../_elements/PeriodBar.vue';
 
     export default {
         name      : 'BookingPopup',
         components: {
             //            PeriodBar,
+            AButton,
+            APrimaryButton,
             APopup,
             Flatpickr,
         },
@@ -87,6 +89,10 @@
         methods: {
             dismissPopup() {
                 this.showPopup = false
+            },
+
+            requestBooking() {
+                debugger;
             },
         },
     }

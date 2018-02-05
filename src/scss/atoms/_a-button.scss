@@ -34,8 +34,15 @@
 
     border-radius: 2px;
 
+    & + & {
+        margin-left: .375em;
+    }
+
     &:active {
         outline: none;
+
+        transform: translate(2px, 2px);
+        box-shadow: inset .1em .1em .1em rgba(black, .4);
     }
 
     &:hover {
@@ -52,12 +59,13 @@
         color: rgba(0, 0, 0, 0.38);
         cursor: default;
         pointer-events: none;
+        box-shadow: none;
     }
 
     &:not(:disabled) {
-        background-color: transparent;
+        //background-color: transparent;
         //color: color(primary);
-        color: inherit;
+        //color: inherit;
 
         will-change: transform, opacity;
         -webkit-tap-highlight-color: transparent;
@@ -74,6 +82,20 @@
             bottom: 0;
 
             border-top: 2px solid currentColor;
+        }
+    }
+
+    &--primary {
+        background-color: color('primary');
+        color: text-color('primary');
+
+        box-shadow: .1em .1em .1em rgba(black, .4);
+
+        &:hover, &:focus {
+
+        }
+        &:active {
+            box-shadow: 0 0 0 rgba(black, .4);
         }
     }
 }
