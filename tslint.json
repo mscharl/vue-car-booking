@@ -10,7 +10,19 @@
             "single"
         ],
         "object-literal-sort-keys": false,
-        "interface-name": false
+        "interface-name": false,
+        "whitespace": [
+            true,
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-separator",
+            "check-rest-spread",
+            "check-type",
+            "check-typecast",
+            "check-type-operator",
+            "check-preblock"
+        ]
     },
     "rulesDirectory": []
 }
