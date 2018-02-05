@@ -1,10 +1,13 @@
 <template>
-    <div id="app" class="App">
-        <toolbar></toolbar>
+    <div id="app">
+        <div class="App">
+            <toolbar></toolbar>
 
-        <main class="App__main">
-            <router-view name="calendar"></router-view>
-        </main>
+            <main class="App__main">
+                <router-view name="calendar"></router-view>
+            </main>
+        </div>
+
 
         <section class="App__popups">
             <booking-popup></booking-popup>
