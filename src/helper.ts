@@ -1,4 +1,6 @@
-import moment from 'moment';
+import * as moment from 'moment';
+import { Route } from 'vue-router';
+import { Dictionary } from 'vuex';
 
 /**
  * Calculate the first day based on the given route
@@ -7,8 +9,8 @@ import moment from 'moment';
  *
  * @return {moment.Moment}
  */
-export const firstDayFromRoute = (route) => {
-    const params = route.params;
+export function firstDayFromRoute(route: Route): moment {
+    const params: Dictionary<number> = route.params;
 
     switch(route.name) {
         case 'month':
@@ -30,7 +32,6 @@ export const firstDayFromRoute = (route) => {
                 .date(params.day);
 
         default:
-            console.warn('UNSUPPORTED ROUTE');
-            return moment();
+            throw new Error('UNSUPPORTED ROUTE');
     }
-};
+}
