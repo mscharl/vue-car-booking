@@ -38,7 +38,7 @@
 
         data() {
             return {
-                showPopup : true,
+                showPopup : false,
                 now       : new Date(),
                 nowTimeout: null,
 
