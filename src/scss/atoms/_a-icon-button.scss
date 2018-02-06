@@ -19,4 +19,27 @@
     cursor: pointer;
 
     user-select: none;
+
+    &--floating {
+        width: 2.4em;
+        height: 2.4em;
+        line-height: 2.4em;
+
+        text-align: center;
+
+        border: none;
+        border-radius: 100%;
+        box-shadow: .1em .1em .1em rgba(black, .4);
+
+        background-color: color('secondary');
+        color: text-color('secondary');
+
+        &:hover, &:focus {
+
+        }
+        &:active {
+            transform: translate(1px, 1px);
+            box-shadow: 0 0 0 rgba(black, .4);
+        }
+    }
 }

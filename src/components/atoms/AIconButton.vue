@@ -6,7 +6,7 @@
         props: {
             tag : {
                 type    : String,
-                required: true,
+                required: false,
                 default : 'button',
             },
             to  : {
@@ -20,9 +20,11 @@
         },
 
         render(createElement, context) {
-            const classes = [
-                'a-icon-button', 'material-icons', context.data.staticClass,
-            ];
+            const classes = {
+                ...context.data.class,
+                'a-icon-button' : true,
+                'material-icons': true,
+            };
 
             return context.props.to ? createElement('router-link', {
                 'class': classes,
@@ -36,6 +38,6 @@
                     click: context.listeners.click,
                 },
             }, [context.props.icon]);
-        }
+        },
     }
 </script>
