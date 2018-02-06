@@ -1,4 +1,6 @@
 <script>
+    import AButton from './AButton.vue';
+
     export default {
         name      : 'APrimaryButton',
         functional: true,
@@ -26,7 +28,7 @@
                 'a-button--primary': true,
             };
 
-            return createElement('a-button', context.data, context.children);
+            return createElement(AButton, context.data, context.children);
         },
     }
 </script>
