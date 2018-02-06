@@ -1,7 +1,8 @@
 <script>
     import moment from 'moment';
-    import { mapGetters } from 'vuex';
+    import { mapGetters, mapActions } from 'vuex';
     import * as CalendarGetters from '../core/store/calendar/types/getters';
+    import * as BookingsActions from '../core/store/bookings/types/actions';
 
     import AFloatingButton from './atoms/AFloatingButton.vue';
     import CalendarTransition from './transitions/CalendarTransition.vue';
@@ -40,9 +41,9 @@
         },
 
         methods: {
-            addBooking(event) {
-                console.log(event, this);
-            },
+            ...mapActions({
+                addBooking: BookingsActions.CREATE_NEW_BOOKING,
+            })
         },
 
         render(createElement) {

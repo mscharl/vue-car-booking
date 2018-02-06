@@ -48,6 +48,8 @@ $variables: (
                 'border': rgba(0, 0, 0, .05),
                 'border-dark': rgba(0, 0, 0, .15),
                 'border-darker': rgba(0, 0, 0, .25),
+                'success': #4CAF50,
+                'error': #D32F2F,
         ),
         'text': (
                 'base': #333333,
@@ -57,6 +59,8 @@ $variables: (
                 'secondary-light': #333333,
                 'secondary': #333333,
                 'secondary-dark': #333333,
+                'success': #2E7B32, // a little darker to increase readability
+                'error': #D32F2F,
         ),
         'calendar': (
                 'one-hour-height': 3.5rem,

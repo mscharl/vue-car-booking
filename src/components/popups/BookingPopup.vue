@@ -20,11 +20,14 @@
 </template>
 
 <script>
-    import APopup from '../atoms/APopup.vue';
-    import Flatpickr from '../_elements/Flatpickr.vue';
+    import { mapActions, mapGetters } from 'vuex';
     import * as BookingModelFactory from '../../factories/BookingModelFactory';
+    import * as BookingsActionTypes from '../../core/store/bookings/types/actions';
+    import * as BookingsGetterTypes from '../../core/store/bookings/types/getters';
     import AButton from '../atoms/AButton.vue';
+    import APopup from '../atoms/APopup.vue';
     import APrimaryButton from '../atoms/APrimaryButton.vue';
+    import Flatpickr from '../_elements/Flatpickr.vue';
     //    import PeriodBar from '../_elements/PeriodBar.vue';
 
     export default {
@@ -39,7 +42,6 @@
 
         data() {
             return {
-                showPopup : false,
                 now       : new Date(),
                 nowTimeout: null,
 
@@ -65,6 +67,10 @@
         },
 
         computed: {
+            ...mapGetters({
+                showPopup: BookingsGetterTypes.SHOW_POPUP,
+            }),
+
             popupTitle() {
                 // Prepared for editing an existing booking
                 return 'Neue Buchung'
@@ -88,9 +94,9 @@
         },
 
         methods: {
-            dismissPopup() {
-                this.showPopup = false
-            },
+            ...mapActions({
+                'dismissPopup': BookingsActionTypes.DISMISS_NEW_BOOKING,
+            }),
 
             requestBooking() {
                 debugger;

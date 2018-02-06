@@ -5,4 +5,8 @@ export default {
     [types.SHOW_POPUP](state: BookingsState) {
         state.showPopup = true;
     },
+
+    [types.CLOSE_POPUP](state: BookingsState) {
+        state.showPopup = false;
+    },
 } as BookingsMutationTree;
