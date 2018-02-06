@@ -1,5 +1,6 @@
 @import "variables";
 @import "transitions";
+
 // Third party
 @import "../../node_modules/flatpickr/dist/themes/material_blue.css";
 @import "third-party/flatpickr";
@@ -17,6 +18,7 @@
 @import "elements/PeriodBar";
 
 // components
+@import "components/Calendar";
 @import "components/Calendar-nav";
 @import "components/Calendar-style";
 @import "components/Day-header";

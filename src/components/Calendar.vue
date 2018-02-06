@@ -3,15 +3,17 @@
     import { mapGetters } from 'vuex';
     import * as CalendarGetters from '../core/store/calendar/types/getters';
 
-    import Month from './Month.vue';
-    import Days from './Days.vue';
-    import Day from './Day.vue';
+    import AFloatingButton from './atoms/AFloatingButton.vue';
     import CalendarTransition from './transitions/CalendarTransition.vue';
+    import Day from './Day.vue';
+    import Days from './Days.vue';
+    import Month from './Month.vue';
 
     export default {
         name: 'Calendar',
 
         components: {
+            AFloatingButton,
             CalendarTransition,
             Day,
             Days,
@@ -37,17 +39,38 @@
             },
         },
 
+        methods: {
+            addBooking(event) {
+                console.log(event, this);
+            },
+        },
+
         render(createElement) {
             const route = this.$route;
             const key   = btoa(`${route.path}__${this._uid}`);
 
-            return createElement('calendar-transition', [
-                createElement(this.calendarComponent, {
-                    key,
-                    props: {
-                        firstDay: this.firstDay.clone(),
-                    },
-                })
+            return createElement('div', { 'class': 'Calendar' }, [
+                createElement('div', {
+                    'class': 'Calendar__element',
+                }, [
+                    createElement('calendar-transition', [
+                        createElement(this.calendarComponent, {
+                            key,
+                            props: {
+                                firstDay: this.firstDay.clone(),
+                            },
+                        }),
+                    ]),
+                ]), createElement('div', {
+                    'class': 'Calendar__floating-button',
+                }, [
+                    createElement('a-floating-button', {
+                        props: { icon: 'add' },
+                        on   : {
+                            click: this.addBooking,
+                        },
+                    }),
+                ]),
             ]);
         },
     }

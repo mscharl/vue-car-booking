@@ -1,0 +1,11 @@
+.Calendar {
+    &, &__element {
+        height: 100%;
+    }
+
+    &__floating-button {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+    }
+}
