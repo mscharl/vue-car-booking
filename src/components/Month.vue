@@ -30,7 +30,7 @@
 
         props: {
             firstDay: {
-                type    : moment,
+                type    : moment.Moment,
                 required: true,
             },
         },
