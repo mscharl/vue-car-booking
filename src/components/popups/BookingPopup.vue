@@ -1,5 +1,6 @@
 <template>
-    <a-popup popup-class="BookingPopup" :title="popupTitle" @close="dismissPopup" v-if="showPopup">
+    <!-- Using `v-show` instead of `v-if` for performance reasons. The latter one caused the browser to freeze for a small (<1sec) amount of time -->
+    <a-popup popup-class="BookingPopup" :title="popupTitle" @close="dismissPopup" v-show="showPopup">
         <fieldset class="BookingPopup__fieldset BookingPopup__fieldset--time">
             <legend class="BookingPopup__fieldset__legend">
                 Buchungszeitraum
