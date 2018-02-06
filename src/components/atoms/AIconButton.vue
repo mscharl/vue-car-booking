@@ -20,11 +20,9 @@
         },
 
         render(createElement, context) {
-            const classes = {
-                ...context.data.class,
-                'a-icon-button' : true,
-                'material-icons': true,
-            };
+            const classes = [
+                context.data.class, context.data.staticClass, 'a-icon-button', 'material-icons',
+            ];
 
             return context.props.to ? createElement('router-link', {
                 'class': classes,

@@ -23,10 +23,9 @@
         },
 
         render(createElement, context) {
-            context.data.class = {
-                ...context.data.class,
-                'a-button--primary': true,
-            };
+            context.data.class = [
+                context.data.class, context.data.staticClass, 'a-button--primary',
+            ];
 
             return createElement(AButton, context.data, context.children);
         },

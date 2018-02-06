@@ -16,10 +16,9 @@
         render(createElement, context) {
             const data = {
                 ...context.data,
-                'class': {
-                    ...context.data.class,
-                    'a-icon-button--floating': true,
-                },
+                'class': [
+                    context.data.class, context.data.staticClass, 'a-icon-button--floating',
+                ],
                 props  : context.props,
             };
 
