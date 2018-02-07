@@ -9,6 +9,7 @@ export interface RootState {
 
 export interface BookingsState {
     showPopup: boolean;
+    bookings: Bookings.Model[];
 }
 
 export type BookingsActionTree = ActionTree<BookingsState, RootState>;

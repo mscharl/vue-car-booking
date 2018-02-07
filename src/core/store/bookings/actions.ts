@@ -33,7 +33,11 @@ export default {
      * @param {Booking} booking
      */
     [types.ADD_NEW_BOOKING](context: BookingActionContext, booking: Booking.Model) {
-        console.log(booking);
-        debugger;
+        context.commit(mutationTypes.ADD_BOOKING, booking);
+
+        // simulate api call
+        return new Promise((resolve) => {
+            setTimeout(resolve, 1000);
+        });
     },
 } as BookingsActionTree;

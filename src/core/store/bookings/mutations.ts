@@ -9,4 +9,10 @@ export default {
     [types.CLOSE_POPUP](state: BookingsState) {
         state.showPopup = false;
     },
+
+    [types.ADD_BOOKING](state: BookingsState, booking: Booking.Model) {
+        state.bookings = [
+            ...state.bookings, { ...booking },
+        ];
+    },
 } as BookingsMutationTree;
