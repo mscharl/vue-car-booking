@@ -1,0 +1,65 @@
+.a-indeterminate-progress {
+    position: relative;
+    display: inline-block;
+
+    width: 1em;
+    height: 1em;
+
+    vertical-align: middle;
+
+    &:before, &:after {
+        display: block;
+        content: '';
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        transition: border-color .2s ease-out;
+
+        border: 1px solid transparent;
+
+        animation-name: AIndeterminateProgressSpin;
+        animation-duration: 1.6s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    &:before {
+        border-color: currentColor;
+        border-radius: 100%;
+
+        opacity: .2;
+
+    }
+
+    &:after {
+        border-width: 1px;
+        border-top-color: currentColor;
+        border-radius: 100%;
+    }
+
+    @at-root {
+        [disabled] & {
+            &:before {
+                border-color: text-color('base');
+            }
+
+            &:after {
+                border-top-color: text-color('base');
+            }
+        }
+    }
+}
+
+
+@keyframes AIndeterminateProgressSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
