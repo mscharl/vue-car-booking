@@ -23,11 +23,15 @@
         },
 
         render(createElement, context) {
-            context.data.class = [
-                context.data.class, context.data.staticClass, 'a-button--primary',
-            ];
+            const data = {
+                ...context.data,
+                'class': [
+                    context.data.class, context.data.staticClass, 'a-button--primary',
+                ],
+                props  : context.props,
+            };
 
-            return createElement(AButton, context.data, context.children);
+            return createElement(AButton, data, context.children);
         },
     }
 </script>

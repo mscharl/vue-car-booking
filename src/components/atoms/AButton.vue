@@ -21,20 +21,15 @@
         },
 
         render(createElement, context) {
-            const classes = [
-                context.data.class, context.data.staticClass, 'a-button', { 'a-button--active': context.props.active },
-            ];
+            const data = {
+                ...context.data,
+                'class': [
+                    context.data.class, context.data.staticClass, 'a-button', { 'a-button--active': context.props.active },
+                ],
+                props  : context.props,
+            };
 
-            return context.props.to ? createElement('router-link', {
-                'class': classes,
-                props  : {
-                    tag: context.props.tag,
-                    to : context.props.to,
-                },
-            }, context.children) : createElement(context.props.tag, {
-                'class': classes,
-                on     : context.listeners,
-            }, context.children);
+            return context.props.to ? createElement('router-link', data, context.children) : createElement(context.props.tag, data, context.children);
         },
     }
 </script>
