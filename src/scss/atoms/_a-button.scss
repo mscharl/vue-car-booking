@@ -34,6 +34,8 @@
 
     border-radius: 2px;
 
+    transition: all .2s ease-out;
+
     & + & {
         margin-left: .375em;
     }
