@@ -13,8 +13,11 @@
         </fieldset>
 
         <template slot="footer">
-            <a-button @click="dismissPopup">Abbrechen</a-button>
-            <a-primary-button @click="requestBooking" :other="booking">Buchen</a-primary-button>
+            <a-button @click="dismissPopup" :disabled="saving">Abbrechen</a-button>
+            <a-primary-button @click="requestBooking" :disabled="saving">
+                <template v-if="!saving">Buchen</template>
+                <a-indeterminate-progress v-if="saving"></a-indeterminate-progress>
+            </a-primary-button>
         </template>
     </a-popup>
 </template>
@@ -28,12 +31,14 @@
     import APopup from '../atoms/APopup.vue';
     import APrimaryButton from '../atoms/APrimaryButton.vue';
     import Flatpickr from '../_elements/Flatpickr.vue';
+    import AIndeterminateProgress from '../atoms/AIndeterminateProgress.vue';
     //    import PeriodBar from '../_elements/PeriodBar.vue';
 
     export default {
         name      : 'BookingPopup',
         components: {
             //            PeriodBar,
+            AIndeterminateProgress,
             AButton,
             APrimaryButton,
             APopup,
@@ -46,6 +51,8 @@
                 nowTimeout: null,
 
                 booking: BookingModelFactory.createFromNothing(),
+
+                saving: false,
             }
         },
 
@@ -95,11 +102,26 @@
 
         methods: {
             ...mapActions({
-                'dismissPopup': BookingsActionTypes.DISMISS_NEW_BOOKING,
+                'dismissPopup' : BookingsActionTypes.DISMISS_NEW_BOOKING,
+                'addNewBooking': BookingsActionTypes.ADD_NEW_BOOKING,
+                'closePopup'   : BookingsActionTypes.CLOSE_BOOKING_POPUP,
             }),
 
             requestBooking() {
-                debugger;
+                const booking = {
+                    ...this.booking
+                };
+
+                this.saving = true;
+
+                this.addNewBooking(booking)
+                    .then(this.closePopup)
+                    .catch((error) => {
+                        console.error(error);
+                    })
+                    .then(() => {
+                        this.saving = false;
+                    });
             },
         },
     }
