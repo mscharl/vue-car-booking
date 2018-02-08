@@ -1,5 +1,6 @@
 import { Route } from 'vue-router';
 import { ActionContext, ActionTree, GetterTree, MutationTree } from 'vuex';
+import { Booking } from './Booking';
 
 export interface RootState {
     route: Route;
@@ -9,7 +10,7 @@ export interface RootState {
 
 export interface BookingsState {
     showPopup: boolean;
-    bookings: Bookings.Model[];
+    bookings: Booking[];
 }
 
 export type BookingsActionTree = ActionTree<BookingsState, RootState>;

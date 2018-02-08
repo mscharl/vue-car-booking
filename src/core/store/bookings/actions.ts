@@ -1,3 +1,4 @@
+import { Booking } from '../../../types/Booking';
 import { BookingActionContext, BookingsActionTree } from '../../../types/Store';
 import * as types from './types/actions';
 import * as mutationTypes from './types/mutations';
@@ -32,7 +33,7 @@ export default {
      * @param {BookingActionContext} context
      * @param {Booking} booking
      */
-    [types.ADD_NEW_BOOKING](context: BookingActionContext, booking: Booking.Model) {
+    [types.ADD_NEW_BOOKING](context: BookingActionContext, booking: Booking) {
         context.commit(mutationTypes.ADD_BOOKING, booking);
 
         // simulate api call

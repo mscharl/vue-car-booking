@@ -1,6 +1,8 @@
+import { Booking } from '../types/Booking';
+
 const BOOKING_MINUTE_SNAP = 15;
 
-export function createFromNothing(now: Date = new Date(), durationInMinutes: number = 60): Booking.Model {
+export function createFromNothing(now: Date = new Date(), durationInMinutes: number = 60): Booking {
     const startDate    = new Date(now);
     const startMinutes = Math.ceil((startDate.getMinutes() + 1) / BOOKING_MINUTE_SNAP) * BOOKING_MINUTE_SNAP;
 
